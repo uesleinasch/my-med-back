@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import path from 'path';
+import { UsersModule } from '../../modules/users/users.module';
 
 const app: Application = express();
 
@@ -12,7 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 // Servindo arquivos estáticos da pasta public
 app.use(express.static(path.join(process.cwd(), 'public')));
 
-// Rotas serão adicionadas aqui posteriormente
-// app.use('/api', routes);
+// Inicializa e registra os módulos
+const usersModule = new UsersModule();
+app.use('/api/users', usersModule.getRouter());
+
+// Rota padrão
+app.get('/', (req, res) => {
+  res.json({ message: 'Bem-vindo à API My-Med!' });
+});
 
 export default app;
