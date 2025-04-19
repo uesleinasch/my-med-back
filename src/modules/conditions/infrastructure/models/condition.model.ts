@@ -3,7 +3,7 @@ import { Condition } from '../../domain/condition.entity';
 
 // Interface para representar o documento do MongoDB
 export interface ConditionDocument extends Condition, Document {
-  id: string;
+  _id: string;
 }
 
 const conditionSchema = new Schema(
@@ -17,19 +17,6 @@ const conditionSchema = new Schema(
       type: String,
       required: true,
       enum: ['self', 'dependent']
-    },
-    diagnosedAt: {
-      type: Date,
-      required: true
-    },
-    status: {
-      type: String,
-      required: true,
-      enum: ['active', 'resolved', 'recurrent', 'inactive']
-    },
-    treatments: {
-      type: String,
-      default: ""
     }
   },
   {
@@ -37,8 +24,7 @@ const conditionSchema = new Schema(
     toJSON: {
       virtuals: true,
       transform: function (_, ret) {
-        ret.id = ret._id;
-        delete ret._id;
+        // Mantendo o _id como está
         delete ret.__v;
         return ret;
       },

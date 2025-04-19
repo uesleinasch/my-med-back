@@ -4,6 +4,7 @@ import path from 'path';
 import { UsersModule } from '../../modules/users/users.module';
 import { AllergiesModule } from '../../modules/allergies/allergies.module';
 import { ConditionsModule } from '../../modules/conditions/conditions.module';
+import { MedicinesModule } from '../../modules/medicines/medicines.module';
 
 const app: Application = express();
 
@@ -19,10 +20,12 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 const usersModule = new UsersModule();
 const allergiesModule = new AllergiesModule();
 const conditionsModule = new ConditionsModule();
+const medicinesModule = new MedicinesModule();
 
 app.use('/api/users', usersModule.getRouter());
 app.use('/api/allergies', allergiesModule.getRouter());
 app.use('/api/medical_conditions', conditionsModule.getRouter());
+app.use('/api/medicines', medicinesModule.getRouter());
 
 // Rota padrão
 app.get('/', (req, res) => {

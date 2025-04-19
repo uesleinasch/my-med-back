@@ -8,11 +8,6 @@ export interface AllergyDocument extends Allergy, Document {
 
 const allergySchema = new Schema(
   {
-    allergyId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      auto: true
-    },
     relationshipType: {
       type: String,
       required: true,
