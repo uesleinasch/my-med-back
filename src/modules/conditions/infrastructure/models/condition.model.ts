@@ -8,15 +8,30 @@ export interface ConditionDocument extends Condition, Document {
 
 const conditionSchema = new Schema(
   {
-    conditionId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      auto: true
-    },
-    relationshipType: {
+    name: {
       type: String,
       required: true,
-      enum: ['self', 'dependent']
+      trim: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    symptoms: {
+      type: [String],
+      default: []
+    },
+    chronic: {
+      type: Boolean,
+      default: false
+    },
+    infectious: {
+      type: Boolean,
+      default: false
+    },
+    notes: {
+      type: String,
+      default: ''
     }
   },
   {
