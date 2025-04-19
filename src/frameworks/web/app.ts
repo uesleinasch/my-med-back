@@ -3,6 +3,7 @@ import cors from 'cors';
 import path from 'path';
 import { UsersModule } from '../../modules/users/users.module';
 import { AllergiesModule } from '../../modules/allergies/allergies.module';
+import { ConditionsModule } from '../../modules/conditions/conditions.module';
 
 const app: Application = express();
 
@@ -17,9 +18,11 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 // Inicializa e registra os módulos
 const usersModule = new UsersModule();
 const allergiesModule = new AllergiesModule();
+const conditionsModule = new ConditionsModule();
 
 app.use('/api/users', usersModule.getRouter());
 app.use('/api/allergies', allergiesModule.getRouter());
+app.use('/api/medical_conditions', conditionsModule.getRouter());
 
 // Rota padrão
 app.get('/', (req, res) => {
