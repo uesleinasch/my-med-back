@@ -28,7 +28,7 @@ const allergySchema = new Schema({
   allergyId: {
     type: Schema.Types.ObjectId,
     required: true,
-    // ref: 'Allergy' // Será implementado quando tivermos o modelo de alergias
+    ref: 'Allergy'
   },
   relationshipType: {
     type: String,
