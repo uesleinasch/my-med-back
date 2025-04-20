@@ -3,9 +3,13 @@ import { Types } from 'mongoose';
 export class Allergy {
   constructor(
     public allergyId?: Types.ObjectId,
-    public relationshipType?: string, 
-    public diagnosedAt?: Date,
-    public severity?: string, 
+    public name?: string,
+    public allergen?: string,
+    public reaction?: string,
+    public severity?: string,
+    public chronic?: boolean,
     public notes?: string,
+    public createdAt?: Date,
+    public updatedAt?: Date
   ) {}
 }

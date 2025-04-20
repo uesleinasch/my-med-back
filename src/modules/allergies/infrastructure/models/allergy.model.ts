@@ -8,19 +8,26 @@ export interface AllergyDocument extends Allergy, Document {
 
 const allergySchema = new Schema(
   {
-    relationshipType: {
+    name: {
       type: String,
-      required: true,
-      enum: ['self', 'dependent']
+      required: true
     },
-    diagnosedAt: {
-      type: Date,
+    allergen: {
+      type: String,
+      required: true
+    },
+    reaction: {
+      type: String,
       required: true
     },
     severity: {
       type: String,
       required: true,
-      enum: ['low', 'medium', 'high']
+      enum: ['leve', 'moderada', 'grave']
+    },
+    chronic: {
+      type: Boolean,
+      default: false
     },
     notes: {
       type: String
